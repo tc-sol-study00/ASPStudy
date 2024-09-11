@@ -20,6 +20,7 @@ namespace ASPEnshu.Controllers
         }
 
         //初期表示（post後の再表示と兼ねる）
+        [HttpGet]
         public async Task<IActionResult> EducationEntrySheet() {
             EducationVM viewModel=await _service.SetViewModel();
             return View(viewModel);
@@ -31,7 +32,7 @@ namespace ASPEnshu.Controllers
         public async Task<IActionResult> EducationEntrySheet(EducationVM educationVM) {
             ModelState.Clear();
             EducationVM viewModel=await _service.AfterPostExecution(educationVM);
-            return View(viewModel);
+            return RedirectToAction();
         }
     }
 }
