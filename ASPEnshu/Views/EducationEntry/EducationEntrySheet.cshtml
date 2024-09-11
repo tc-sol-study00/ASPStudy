@@ -1,0 +1,108 @@
+﻿@model ASPEnshu.Models.ViewModels.EducationVM
+@{
+    ViewData["Title"] = "EducationEntrySheet";
+}
+
+<hr />
+<form asp-action="EducationEntrySheet" class="w-100">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <p>データ追加エリア</p>
+    <hr />
+    <table class="table table-borderless">
+        <tr>
+            <!-- Classcode -->
+            <td>
+                <label asp-for="@Model.educationForEntry.Classcode" class="control-label"></label>
+                <input asp-for="@Model.educationForEntry.Classcode" class="form-control" />
+                <span asp-validation-for="@Model.educationForEntry.Classcode" class="text-danger"></span>
+            </td>
+            <!-- Seitono -->
+            <td>
+                <label asp-for="@Model.educationForEntry.Seitono" class="control-label"></label>
+                <input asp-for="@Model.educationForEntry.Seitono" class="form-control" />
+                <span asp-validation-for="@Model.educationForEntry.Seitono" class="text-danger"></span>
+            </td>
+            <!-- Kokugo -->
+            <td>
+                <label asp-for="@Model.educationForEntry.Kokugo" class="control-label"></label>
+                <input asp-for="@Model.educationForEntry.Kokugo" class="form-control" />
+                <span asp-validation-for="@Model.educationForEntry.Kokugo" class="text-danger"></span>
+            </td>
+            <!-- Suugaku -->
+            <td>
+                <label asp-for="@Model.educationForEntry.Suugaku" class="control-label"></label>
+                <input asp-for="@Model.educationForEntry.Suugaku" class="form-control" />
+                <span asp-validation-for="@Model.educationForEntry.Suugaku" class="text-danger"></span>
+            </td>
+            <!-- Rika -->
+            <td>
+                <label asp-for="@Model.educationForEntry.Rika" class="control-label"></label>
+                <input asp-for="@Model.educationForEntry.Rika" class="form-control" />
+                <span asp-validation-for="@Model.educationForEntry.Rika" class="text-danger"></span>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <p>データ閲覧・編集エリア</p>
+    <table class="table table-borderless">
+        <tr>
+            <th>
+                <label asp-for="@Model.educations.FirstOrDefault().Classcode" class="control-label"></label>
+            </th>
+            <th>
+                <label asp-for="@Model.educations.FirstOrDefault().Seitono" class="control-label"></label>
+            </th>
+            <th>
+                <label asp-for="@Model.educations.FirstOrDefault().Kokugo" class="control-label"></label>
+            </th>
+            <th>
+                <label asp-for="@Model.educations.FirstOrDefault().Suugaku" class="control-label"></label>
+            </th>
+            <th>
+                <label asp-for="@Model.educations.FirstOrDefault().Rika" class="control-label"></label>
+            </th>
+            <th>
+                <label asp-for="@Model.educations.FirstOrDefault().DeleteFlg" class="control-label"></label>
+            </th>
+        </tr>
+
+        @for (int count = 0; count < Model.educations.Count(); count++) {
+            <tr>
+                <td>
+                    <input asp-for="@Model.educations[count].Classcode" class="form-control" />
+                </td>
+                <td>
+                    <input asp-for="@Model.educations[count].Seitono" class="form-control" />
+                </td>
+                <td>
+                    <input asp-for="@Model.educations[count].Kokugo" class="form-control" />
+                </td>
+                <td>
+                    <input asp-for="@Model.educations[count].Suugaku" class="form-control" />
+                </td>
+                <td>
+                    <input asp-for="@Model.educations[count].Rika" class="form-control" />
+                </td>
+                <td>
+                    <input asp-for="@Model.educations[count].DeleteFlg" type="checkbox" class="form-check-input" />
+                </td>
+            </tr>
+        }
+        <hr />
+        <!-- Save Button -->
+        <tr>
+            <td>
+                <input type="submit" value="Save" class="btn btn-primary mt-4" />
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
