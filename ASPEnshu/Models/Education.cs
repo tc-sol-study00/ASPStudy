@@ -6,7 +6,6 @@ namespace ASPEnshu.Models;
 [PrimaryKey(nameof(Classcode), nameof(Seitono))]
 public class Education
 {
-
     [Column("classcode")]
     public string Classcode { get; set; } = null!;
 

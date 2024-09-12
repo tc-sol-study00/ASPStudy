@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ASPEnshu.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 //DBコンテキスト
 builder.Services.AddDbContext<ASPEnshuContext>(options =>
