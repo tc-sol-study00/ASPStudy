@@ -13,37 +13,38 @@ namespace ASPEnshu.Controllers
 
         private IService<EducationVM> _service;
 
+        [TempData]
+        public int Id { get; set; }
+
+        public EducationVM EducationVM { get; set; }
+
         public EducationEntryController(ASPEnshuContext context)
         {
             _context = context;
             _service = new EducationService(_context);
         }
 
-        [HttpGet]
-        [Route("/{id}")]
-        public async Task<IActionResult> Index(int id) {
-            return RedirectToAction("EducationEntrySheet");
-        }
         //初期表示（post後の再表示と兼ねる）
         [HttpGet]
         public async Task<IActionResult> EducationEntrySheet(int id) {
-            EducationVM viewModel=await _service.SetViewModel();
-            TempData["id"] = id.ToString();
-            return View(viewModel);
+            EducationVM = await _service.SetViewModel();
+            this.Id = id;
+            return View(EducationVM);
         }
 
         //post後
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EducationEntrySheet(EducationVM educationVM) {
-            ModelState.Clear();
-            EducationVM viewModel=await _service.AfterPostExecution(educationVM);
 
-            if (int.Parse(TempData["id"].ToString()) == 1) {
-                return View(viewModel);
+            EducationVM = await _service.AfterPostExecution(educationVM);
+
+            if (Id == 1) {   //起動urlのid部分が1の場合、RPG対応しない
+                ModelState.Clear();
+                return View(EducationVM);
             }
   
-            return RedirectToAction();
+            return RedirectToAction();  //こちらがRPG対応したもの
         }
     }
 }
