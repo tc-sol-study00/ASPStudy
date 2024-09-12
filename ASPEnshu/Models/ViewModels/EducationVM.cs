@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ASPEnshu.Models.ViewModels {
-
     public class EducationForEntry {
         public string? Classcode { get; set; } = null!;
 
