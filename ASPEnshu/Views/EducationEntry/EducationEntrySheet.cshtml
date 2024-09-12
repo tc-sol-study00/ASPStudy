@@ -3,40 +3,52 @@
     ViewData["Title"] = "EducationEntrySheet";
 }
 
-<hr />
+<style>
+    .table-fixed-width th,
+    .table-fixed-width td {
+        width: 150px; /* 必要に応じて調整 */
+    }
+</style>
+
 <form asp-action="EducationEntrySheet" class="w-100">
     <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-    <p>データ追加エリア</p>
-    <hr />
-    <table class="table table-borderless">
+    <p style="text-indent: 20px;background-color: #E0E0E0; color: black; padding: 10px;">データ追加エリア</p>
+    <table class="table table-borderless table-fixed-width">
         <tr>
             <!-- Classcode -->
+            <th><label asp-for="@Model.educationForEntry.Classcode" class="control-label"></label></th>
+            <th><label asp-for="@Model.educationForEntry.Seitono" class="control-label"></label></th>
+            <th><label asp-for="@Model.educationForEntry.Kokugo" class="control-label"></label></th>
+            <th><label asp-for="@Model.educationForEntry.Suugaku" class="control-label"></label></th>
+            <th><label asp-for="@Model.educationForEntry.Rika" class="control-label"></label></th>
+            <th></th>
+        </tr>
+        <tr>
             <td>
-                <label asp-for="@Model.educationForEntry.Classcode" class="control-label"></label>
                 <input asp-for="@Model.educationForEntry.Classcode" class="form-control" />
                 <span asp-validation-for="@Model.educationForEntry.Classcode" class="text-danger"></span>
             </td>
             <!-- Seitono -->
             <td>
-                <label asp-for="@Model.educationForEntry.Seitono" class="control-label"></label>
+
                 <input asp-for="@Model.educationForEntry.Seitono" class="form-control" />
                 <span asp-validation-for="@Model.educationForEntry.Seitono" class="text-danger"></span>
             </td>
             <!-- Kokugo -->
             <td>
-                <label asp-for="@Model.educationForEntry.Kokugo" class="control-label"></label>
+
                 <input asp-for="@Model.educationForEntry.Kokugo" class="form-control" />
                 <span asp-validation-for="@Model.educationForEntry.Kokugo" class="text-danger"></span>
             </td>
             <!-- Suugaku -->
             <td>
-                <label asp-for="@Model.educationForEntry.Suugaku" class="control-label"></label>
+
                 <input asp-for="@Model.educationForEntry.Suugaku" class="form-control" />
                 <span asp-validation-for="@Model.educationForEntry.Suugaku" class="text-danger"></span>
             </td>
             <!-- Rika -->
             <td>
-                <label asp-for="@Model.educationForEntry.Rika" class="control-label"></label>
+
                 <input asp-for="@Model.educationForEntry.Rika" class="form-control" />
                 <span asp-validation-for="@Model.educationForEntry.Rika" class="text-danger"></span>
             </td>
@@ -44,9 +56,9 @@
             </td>
         </tr>
     </table>
-    <hr />
-    <p>データ閲覧・編集エリア</p>
-    <table class="table table-borderless">
+
+    <p style="text-indent: 20px;background-color: #E0E0E0; color: black; padding: 10px;">データ閲覧・編集エリア</p>
+    <table class="table table-borderless table-fixed-width">
         <tr>
             <th>
                 <label asp-for="@Model.educations.FirstOrDefault().Classcode" class="control-label"></label>
@@ -90,7 +102,6 @@
                 </td>
             </tr>
         }
-        <hr />
         <!-- Save Button -->
         <tr>
             <td>
