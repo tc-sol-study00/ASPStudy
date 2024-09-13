@@ -10,6 +10,11 @@
     }
 </style>
 
+<!-- この間は、ここはセッション管理のテストなので、演習とは関係ない-->
+<p>@ViewBag.Session</p>
+<p>@this.Context.Session.GetString("now");</p>
+<!---->
+
 <form asp-action="EducationEntrySheet" class="w-100">
     <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
     <p style="text-indent: 20px;background-color: #E0E0E0; color: black; padding: 10px;">データ追加エリア</p>

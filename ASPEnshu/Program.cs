@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ASPEnshuContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ASPEnshuContext") ?? throw new InvalidOperationException("Connection string 'ASPEnshuContext' not found.")));
 
+builder.Services.AddSession();   //ここはセッション管理のテストなので、演習とは関係ない
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -25,6 +27,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();    //ここはセッション管理のテストなので、演習とは関係ない
 
 app.MapControllerRoute(
     name: "default",
